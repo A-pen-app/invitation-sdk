@@ -22,7 +22,7 @@ func NewInvitationService(i store.Invitation) Invitation {
 func (is *InvitationService) GetValidation(ctx context.Context, p models.InvitationParam) (*models.InvitationValidationStatus, error) {
 	switch p.Type {
 	case models.InvitationTypeID:
-		invitation, err := is.i.Get(ctx, models.IDOptions{ID: &p.ReferenceCode})
+		invitation, err := is.i.Get(ctx, models.InvitationOptions{ID: &p.ReferenceCode})
 		if err == sql.ErrNoRows {
 			return nil, errors.ErrorNotFound
 		} else if err != nil {

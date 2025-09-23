@@ -131,7 +131,7 @@ func (us *invitationStore) Update(ctx context.Context, id string, p *models.Invi
 	return nil
 }
 
-func (us *invitationStore) Get(ctx context.Context, opts models.IDOptions) (*models.Invitation, error) {
+func (us *invitationStore) Get(ctx context.Context, opts models.InvitationOptions) (*models.Invitation, error) {
 
 	query := `
 	SELECT

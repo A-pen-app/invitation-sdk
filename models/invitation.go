@@ -56,7 +56,7 @@ type CodeOptions struct {
 	Code   *string
 }
 
-type IDOptions struct {
+type InvitationOptions struct {
 	ID     *string
 	UserID *string
 }
