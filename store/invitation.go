@@ -183,6 +183,7 @@ func (us *invitationStore) Get(ctx context.Context, opts models.IDOptions) (*mod
 		&invitation.BoundAt,
 		&invitation.Gender,
 		&invitation.Code,
+		&invitation.PassedAt,
 	); err != nil {
 		logging.Errorw(ctx, "get invitation failed", "err", err)
 		return nil, err
