@@ -80,14 +80,14 @@ type InvitationUpdateParam struct {
 	PassedAt    *time.Time  `json:"passed_at"`
 }
 
-type ValidationParam struct {
+type InvitationParam struct {
 	Type          InvitationType `json:"type"`
 	ReferenceCode string         `json:"code"`
 }
 
 type InvitationResponse struct {
 	Type          InvitationType    `json:"type"`
-	ReferenceCode string            `json:"code"`
+	ReferenceCode *string           `json:"code,omitempty"`
 	Status        *InvitationStatus `json:"status,omitempty"`
 	Deeplink      *string           `json:"deeplink,omitempty"`
 }

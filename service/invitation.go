@@ -19,7 +19,7 @@ func NewInvitationService(i store.Invitation) Invitation {
 	return &InvitationService{i: i}
 }
 
-func (is *InvitationService) GetValidation(ctx context.Context, p models.ValidationParam) (*models.InvitationValidationStatus, error) {
+func (is *InvitationService) GetValidation(ctx context.Context, p models.InvitationParam) (*models.InvitationValidationStatus, error) {
 	switch p.Type {
 	case models.InvitationTypeID:
 		invitation, err := is.i.Get(ctx, models.IDOptions{ID: &p.ReferenceCode})
@@ -75,7 +75,7 @@ func (is *InvitationService) CreateCode(ctx context.Context, userID string, plat
 
 	return &models.InvitationResponse{
 		Type:          models.InvitationTypeCode,
-		ReferenceCode: code,
+		ReferenceCode: &code,
 		Deeplink:      &deeplink,
 	}, &models.InvitationReward, nil
 }

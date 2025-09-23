@@ -39,7 +39,7 @@ func (invitation *invitationAPI) getValidation(ctx *gin.Context) {
 		return
 	}
 
-	validation, err := invitation.i.GetValidation(c, models.ValidationParam{
+	validation, err := invitation.i.GetValidation(c, models.InvitationParam{
 		Type:          p.Type,
 		ReferenceCode: p.ReferenceCode,
 	})
