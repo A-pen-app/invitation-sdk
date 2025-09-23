@@ -17,7 +17,7 @@ type invitationAPI struct {
 	i service.Invitation
 }
 
-func Routes(root *gin.Engine, i service.Invitation) {
+func AddInvitationRoutes(root *gin.Engine, i service.Invitation) {
 	invitation := &invitationAPI{
 		i: i,
 	}
