@@ -12,4 +12,5 @@ type Invitation interface {
 	Get(ctx context.Context, opts models.InvitationOptions) (*models.Invitation, error)
 	CreateCode(ctx context.Context, userID string) (string, error)
 	GetCode(ctx context.Context, opts models.CodeOptions) (*models.Code, error)
+	UpdateCodeShareLink(ctx context.Context, code string, shareLink string) error
 }

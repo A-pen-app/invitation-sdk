@@ -48,6 +48,7 @@ type Invitation struct {
 type Code struct {
 	Code      string    `json:"-" db:"code"`
 	UserID    string    `json:"-" db:"user_id"`
+	ShareLink *string   `json:"-" db:"share_link"`
 	CreatedAt time.Time `json:"-" db:"created_at"`
 }
 
@@ -90,6 +91,7 @@ type InvitationResponse struct {
 	ReferenceCode *string           `json:"code,omitempty"`
 	Status        *InvitationStatus `json:"status,omitempty"`
 	Deeplink      *string           `json:"deeplink,omitempty"`
+	ShareLink     *string           `json:"share_link,omitempty"`
 }
 
 type Reward struct {

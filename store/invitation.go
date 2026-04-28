@@ -242,11 +242,21 @@ func (us *invitationStore) CreateCode(ctx context.Context, userID string) (strin
 	return code, nil
 }
 
+func (us *invitationStore) UpdateCodeShareLink(ctx context.Context, code string, shareLink string) error {
+	query := `UPDATE public.invitation_code SET share_link=:share_link WHERE code=:code`
+	_, err := us.db.NamedExec(query, map[string]interface{}{
+		"code":       code,
+		"share_link": shareLink,
+	})
+	return err
+}
+
 func (us *invitationStore) GetCode(ctx context.Context, opts models.CodeOptions) (*models.Code, error) {
-	query := `	
+	query := `
 	SELECT
 		code,
 		user_id,
+		share_link,
 		created_at
 	FROM public.invitation_code`
 
@@ -273,6 +283,7 @@ func (us *invitationStore) GetCode(ctx context.Context, opts models.CodeOptions)
 	if err := us.db.QueryRowx(query, params...).Scan(
 		&code.Code,
 		&code.UserID,
+		&code.ShareLink,
 		&code.CreatedAt,
 	); err != nil {
 		logging.Errorw(ctx, "get invitation failed", "err", err)
